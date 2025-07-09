@@ -1,0 +1,65 @@
+{
+  "Essentials": {
+    "Python 3.11": { "type": "winget", "command": "winget install -e --id Python.Python.3.11" },
+    "Git": { "type": "winget", "command": "winget install -e --id Git.Git" },
+    "Docker Desktop": { "type": "winget", "command": "winget install -e --id Docker.DockerDesktop" },
+    "PowerShell 7": { "type": "winget", "command": "winget install -e --id Microsoft.PowerShell" },
+    "Windows Terminal": { "type": "winget", "command": "winget install -e --id Microsoft.WindowsTerminal" }
+  },
+  "Core ML/DL Frameworks": {
+    "PyTorch": { "type": "pip", "command": "pip install torch torchvision torchaudio" },
+    "TensorFlow": { "type": "pip", "command": "pip install tensorflow" },
+    "ONNX": { "type": "pip", "command": "pip install onnx" },
+    "Transformers": { "type": "pip", "command": "pip install transformers" }
+  },
+  "Notebooks & IDEs": {
+    "VS Code": { "type": "winget", "command": "winget install -e --id Microsoft.VisualStudioCode" },
+    "Jupyter Lab": { "type": "pip", "command": "pip install jupyterlab" },
+    "Jupyter Notebook": { "type": "pip", "command": "pip install notebook" }
+  },
+  "Data Science & Visualization": {
+    "Numpy": { "type": "pip", "command": "pip install numpy" },
+    "Pandas": { "type": "pip", "command": "pip install pandas" },
+    "Matplotlib": { "type": "pip", "command": "pip install matplotlib" },
+    "Seaborn": { "type": "pip", "command": "pip install seaborn" },
+    "Scikit-learn": { "type": "pip", "command": "pip install scikit-learn" }
+  },
+  "Deployment & Servers": {
+    "Ollama": { "type": "winget", "command": "winget install -e --id Ollama.Ollama" },
+    "LM Studio": { "type": "winget", "command": "winget install -e --id Techulus.LMStudio" },
+    "FastAPI": { "type": "pip", "command": "pip install fastapi" },
+    "Uvicorn": { "type": "pip", "command": "pip install uvicorn" },
+    "Hugging Face CLI": { "type": "pip", "command": "pip install -U huggingface_hub" }
+  },
+  "Advanced Tools": {
+    "CUDA Toolkit": { "type": "winget", "command": "winget install -e --id NVIDIA.CUDA" },
+    "NVIDIA Container Toolkit": { "type": "docker", "command": "docker run --rm --gpus all nvidia/cuda:12.1.1-base-ubuntu22.04 nvidia-smi" }
+  },
+  "GitHub Repositories": {
+    "Auto-GPT": { "type": "git", "command": "git clone https://github.com/Significant-Gravitas/Auto-GPT.git" },
+    "Stable Diffusion WebUI": { "type": "git", "command": "git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git" },
+    "ACE-Step": { "type": "git", "command": "git clone https://github.com/ace-step/ACE-Step.git" }
+  },
+  "Docker Containers": {
+    "Jupyter SciPy Notebook": { "type": "docker", "command": "docker run -p 8888:8888 jupyter/scipy-notebook" }
+  },
+  "Kubernetes Manifests":{
+    "KubeFlow": { "type": "note", "content": "For KubeFlow installation, please refer to the official documentation: https://www.kubeflow.org/docs/started/installing-kubeflow/" }
+  },
+  "LLM Serving & Tooling": {
+    "LiteLLM": { "type": "pip", "command": "pip install litellm" },
+    "vLLM (Linux Recommended)": { "type": "pip", "command": "pip install vllm" },
+    "llama.cpp": { "type": "git", "command": "git clone https://github.com/ggerganov/llama.cpp.git" },
+    "FastChat": { "type": "pip", "command": "pip install \"fschat[model_worker,webui]\"" }
+  },
+  "Low-code & Web UIs": {
+    "Open-WebUI": { "type": "docker", "command": "docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main" },
+    "Flowise": { "type": "docker", "command": "docker run -d --name flowise -p 3001:3000 -v ~/.flowise:/root/.flowise flowiseai/flowise:latest" },
+    "n8n": { "type": "docker", "command": "docker run -d --name n8n -p 5678:5678 -v ~/.n8n:/home/node/.n8n n8nio/n8n" }
+  },
+  "Vector Databases": {
+    "Qdrant": { "type": "docker", "command": "docker run -d -p 6333:6333 -p 6334:6334 -v $(pwd)/qdrant_storage:/qdrant/storage qdrant/qdrant" },
+    "ChromaDB": { "type": "pip", "command": "pip install chromadb" },
+    "Milvus Standalone": { "type": "docker", "command": "docker run -d --name milvus_standalone -p 19530:19530 -p 9091:9091 milvusdb/milvus:v2.4.1-standalone" }
+  }
+}
