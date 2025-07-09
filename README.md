@@ -1,7 +1,5 @@
 # Cyd3nt Stack: The AI & LLM Development Environment Setup
 
-Inspired by [ChrisTitusTech/winutil](https://github.com/ChrisTitusTech/winutil), Cyd3nt Stack is a tool to automate the setup of a comprehensive AI and LLM development environment on Windows.
-
 ## Features
 
 - Easy-to-use menu-driven interface.
