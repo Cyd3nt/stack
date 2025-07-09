@@ -117,6 +117,29 @@ def add_new_tool(tool_config):
         print(f"❌ Error writing to tools.json: {e}")
 
 
+def sync_to_github():
+    print("\n--- Syncing to GitHub ---")
+    try:
+        subprocess.run(["git", "add", "."], check=True, text=True)
+        print("✅ Added all changes to staging.")
+
+        commit_message_q = [
+            inquirer.Text('message', message="Enter commit message (e.g., 'Add new tool', 'Update config')"),
+        ]
+        commit_message = inquirer.prompt(commit_message_q)['message']
+
+        subprocess.run(["git", "commit", "-m", commit_message], check=True, text=True)
+        print("✅ Changes committed.")
+
+        subprocess.run(["git", "push", "origin", "main"], check=True, text=True)
+        print("✅ Successfully pushed to GitHub.")
+
+    except subprocess.CalledProcessError as e:
+        print(f"❌ Error syncing to GitHub: {e}")
+        print("Please ensure you have configured Git credentials (e.g., Personal Access Token) for automated pushes.")
+    except FileNotFoundError:
+        print(f"❌ Error: Git command not found. Is Git installed and in your PATH?")
+
 def get_platform():
     """Detects the current operating system."""
     system = platform.system().lower()
@@ -367,7 +390,7 @@ def main():
             inquirer.List(
                 'category',
                 message="Choose a category to install tools from (Enter to select)",
-                choices=list(tool_config.keys()) + ["Add New Tool", "Install All", "Exit"],
+                choices=list(tool_config.keys()) + ["Add New Tool", "Sync to GitHub", "Install All", "Exit"],
             ),
         ]
         category_choice = inquirer.prompt(questions).get('category')
@@ -380,6 +403,10 @@ def main():
             add_new_tool(tool_config)
             # Reload tool_config after adding a new tool
             tool_config = load_tools()
+            continue
+
+        if category_choice == "Sync to GitHub":
+            sync_to_github()
             continue
 
         if category_choice == "Install All":
